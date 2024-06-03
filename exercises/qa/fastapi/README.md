@@ -43,4 +43,4 @@ When creating the task the following validations must be applied:
 - How would you apply regression testing in this project?
 - If it were up to you, what stages would the life cycle of this application include to ensure a high quality standard?
 - Regarding testing, where does a unit and integration test begin and end? That is, what are their differences?
-- How can you measure the code quality of this project? What characteristics make up quality?
+- How can you measure the code quality of this project? What metrics/characteristics make up quality?
