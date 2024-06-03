@@ -1,6 +1,6 @@
 # Software Engineering Interview
 
-A collection of interview exercises for assessing Software Engineer candidates.
+A collection of interview questions and exercises for assessing Software Engineer candidates across multiple key categories.
 
 The objective is the following:
 
