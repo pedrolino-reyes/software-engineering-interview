@@ -162,6 +162,13 @@ The unit and integration tests can be run together to get a view on how much of 
 poetry run pytest tests/unit tests-integration --cov-report term --cov=app
 ```
 
+If you want a really useful view of things, run the html report. The html report will show you which lines of code aren't executed by the tests.
+
+```
+poetry run pytest tests/unit tests-integration --cov-report html --cov=app
+```
+
+This app is so simple at the moment that we have almost 100% test coverage - the only part that isn't covered by the unit and integration tests is the real database connection. This is tested by the e2e tests.
 
 You can run a code coverage report for the e2e tests, but you won't get anything useful. The e2e tests run against an app running in a separate process, and the coverage tool can't track which lines of code are being executed.
 
@@ -172,3 +179,17 @@ To run the e2e tests, you need to have first started the FastAPI server. The e2e
 poetry run pytest tests/e2e
 ```
 
+
+### 7. Running performance tests with Locust
+
+You can run performance tests against a locally-running app by invoking Locust:
+
+```
+poetry run locust -f app/performance/locustfile.py --host=http://127.0.0.1:8000
+```
+
+After executing this command, the Locust web app will be running. You need to open it in a web browser. The output in the command line will tell you where it is running, typically it will be at `http://0.0.0.0:8089`.
+
+When you open the web app, you can configure how many users in total you want to use in your load simulation, and how quickly these users should be ramped up (become active).
+
+There is a sample data set that can be used for load testing, which contains 100,000 tasks.

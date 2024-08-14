@@ -1,6 +1,6 @@
-# How I went about the technical challenge
+# How I went about the technical challenge, plus answers to some of the questions in the readme
 
-I thought I'd include a file to explain how I worked through this technical challenge, with some notes to explain the decisions that were made.
+Here I try to answer the questions in your readme, and explain some of the technical decisions that were made when implementing tests.
 
 I worked through this challenge in the following order.
 
@@ -30,7 +30,7 @@ The db persistence is tested properly by the integration and e2e tests, and the 
 
 ## Test coverage
 
-The coverage report shows that only the real database connection (`app/database.py`) isn't covered by the unit and integration tests. It's possible to add a `.coveragerc` file to automatically exclude this file from the coverage report, in the case that we want to enforce 100% test coverage.
+The coverage report shows that only the "real" database connection (`app/database.py`) isn't covered by the unit and integration tests. It's possible to add a `.coveragerc` file to automatically exclude this file from the coverage report, in the case that we want to enforce 100% test coverage.
 
 
 
@@ -47,6 +47,7 @@ The coverage report shows that only the real database connection (`app/database.
 
 I installed the following libraries using poetry (this is reflected in the change to pyproject.toml):
 
+- locust
 - pytest
 - pytest-cov
 - pytest-mock
