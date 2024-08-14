@@ -22,6 +22,7 @@ I installed the following libraries using poetry (this is reflected in the chang
 
 - pytest
 - pytest-cov
+- pytest-mock
 - requests
 
 
