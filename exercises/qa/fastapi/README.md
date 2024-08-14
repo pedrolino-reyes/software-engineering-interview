@@ -140,6 +140,31 @@ The integration tests require an instance of PostgreSQL to be running. You'll ne
 poetry run pytest tests/integration
 ```
 
+#### Measuring code coverage
+
+The unit and integration tests are run in the same process as the code they test, so meaningful code coverage reports can be created. You can get a quick summary of coverage in the terminal with the `--cov-report term` option.
+
+To run code coverage for just the unit tests:
+
+```
+poetry run pytest tests/unit --cov-report term --cov=app
+```
+
+To run code coverage for just the integration tests:
+
+```
+poetry run pytest tests/integration --cov-report term --cov=app
+```
+
+The unit and integration tests can be run together to get a view on how much of the application code is covered by tests:
+
+```
+poetry run pytest tests/unit tests-integration --cov-report term --cov=app
+```
+
+
+You can run a code coverage report for the e2e tests, but you won't get anything useful. The e2e tests run against an app running in a separate process, and the coverage tool can't track which lines of code are being executed.
+
 #### E2E tests
 To run the e2e tests, you need to have first started the FastAPI server. The e2e tests test the endpoints of the Fast API server.
 
