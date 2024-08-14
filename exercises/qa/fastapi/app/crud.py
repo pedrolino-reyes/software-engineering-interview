@@ -37,6 +37,7 @@ def update_task(db: Session, task: schemas.TaskCreate, task_id: int):
     db_task = get_task(db, task_id)
     if db_task:
         db_task.title = task.title
+        db_task.description = task.description
         db_task.completed = task.completed
         db.commit()
         db.refresh(db_task)

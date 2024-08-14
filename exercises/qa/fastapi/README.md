@@ -115,3 +115,35 @@ poetry run uvicorn app.main:app --reload
 ```
 
 ### 6. Running tests with Poetry
+
+There are 3 sets of tests:
+
+1. Unit tests
+2. Integration tests
+3. End to end (e2e) tests
+
+pytest is used to run all three types of test.
+
+#### Unit tests
+The unit tests run in-memory and are extremely fast as a result. They test the code logic and don't involve writing to disk or to the database.
+
+Ideally, unit tests will cover as much code as possible. This makes them a valuable resource when it comes to refactoring code - they will alert us instantly if any logic is broken inadvertently. For this reason, it is a good idea to run a code coverage report when running the unit tests.
+
+```
+poetry run pytest tests/unit
+```
+
+#### Integration tests
+The integration tests require an instance of PostgreSQL to be running. You'll need to start the docker container before running these tests, as they test the integration of our app with PostgreSQL and make sure we are using the database as intended.
+
+```
+poetry run pytest tests/integration
+```
+
+#### E2E tests
+To run the e2e tests, you need to have first started the FastAPI server. The e2e tests test the endpoints of the Fast API server.
+
+```
+poetry run pytest tests/e2e
+```
+

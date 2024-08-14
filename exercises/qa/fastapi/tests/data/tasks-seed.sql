@@ -1,0 +1,16 @@
+INSERT INTO public.tasks (title, description, completed) VALUES
+('First task', 'This is the first task', true),
+('Second task', 'This is the second task', false),
+('Third task', 'This is the third task', false),
+('Fourth task', 'This is the fourth task', false),
+('Fifth task', 'This is the fifth task', false),
+('Sixth task', 'This is the sixth task', false),
+('Seventh task', 'This is the seventh task', false),
+('Eighth task', 'This is the eigth task', false),
+('Ninth task', 'This is the ninth task', false),
+('Tenth task', 'This is the tenth task', false),
+('Unicode task 1', 'Quizdeltagerne spiste jordbær med fløde, mens cirkusklovnen Wolther spillede på xylofon.', false),
+('Unicode task 2', 'Zwölf Boxkämpfer jagten Eva quer über den Sylter Deich', false),
+('Unicode task 3', 'Γαζέες καὶ μυρτιὲς δὲν θὰ βρῶ πιὰ στὸ χρυσαφὶ ξέφωτο', false),
+('Unicode task 4', 'El pingüino Wenceslao hizo kilómetros bajo exhaustiva lluvia y frío, añoraba a su querido cachorro.', false),
+('Technical test', 'Do the python test for the QA position at Mitiga', true);

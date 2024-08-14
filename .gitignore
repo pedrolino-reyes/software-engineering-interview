@@ -106,3 +106,6 @@ venv.bak/
 .mypy_cache/
 
 .idea/*
+
+# OS X stuff
+.DS_Store
