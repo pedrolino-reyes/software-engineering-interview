@@ -2,9 +2,7 @@
 Tests relating to the details of the create task endpoint.
 """
 
-"""
-Tests focusing on the title field.
-"""
+# Tests focusing on the title field.
 def test_title_is_required(client):
     """
     Title is a required field.
@@ -44,9 +42,7 @@ def test_title_too_long(client):
     assert response.json()["detail"] == "Title length must be between 5 and 50 characters"
 
 
-"""
-Tests focusing on the description field.
-"""
+# Tests focusing on the description field.
 def test_description_is_required(client):
     payload = {
         "title": "This is a valid title"
@@ -71,7 +67,7 @@ def test_unicode_handling(client):
     assert response.status_code == 200
     assert response.json()["title"] == payload["title"]
     assert response.json()["description"] == payload["description"]
-    assert response.json()["completed"] == False
+    assert response.json()["completed"] is False
 
     # get the created task to verify it was stored correctly
     task_id = response.json()["id"]
@@ -79,7 +75,7 @@ def test_unicode_handling(client):
     assert response.status_code == 200
     assert response.json()["title"] == payload["title"]
     assert response.json()["description"] == payload["description"]
-    assert response.json()["completed"] == False
+    assert response.json()["completed"] is False
 
 
 def test_description_too_short(client):
@@ -105,9 +101,7 @@ def test_description_can_be_really_long(client):
     assert response.json()["description"] == payload["description"]
 
 
-"""
-Tests focusing on the completed field.
-"""
+# Tests focusing on the completed field.
 def test_completed_defaults_to_false(client):
     """
     When a task is created, the completed field should default to False.
@@ -118,7 +112,7 @@ def test_completed_defaults_to_false(client):
     }
     response = client.post("/tasks", json=payload)
     assert response.status_code == 200
-    assert response.json()["completed"] == False
+    assert response.json()["completed"] is False
 
 
 def test_completed_is_boolean_only(client):
@@ -132,5 +126,6 @@ def test_completed_is_boolean_only(client):
     }
     response = client.post("/tasks", json=payload)
     assert response.status_code == 422
-    assert response.json()["detail"][0]["msg"] == "Input should be a valid boolean, unable to interpret input"
+    assert response.json()["detail"][0]["msg"] ==\
+      "Input should be a valid boolean, unable to interpret input"
     assert response.json()["detail"][0]["type"] == "bool_parsing"

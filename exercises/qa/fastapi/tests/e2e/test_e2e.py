@@ -10,7 +10,7 @@ def test_get_tasks(api):
     assert response.status_code == 200
 
     # check that the response is a list of tasks
-    assert type(response.json()) == list
+    assert isinstance(response.json(), list)
     # we've seeded the database and there should be at least 15 tasks in the
     # database, but only 10 should be returned by this endpoint
     assert len(response.json()) == 10
@@ -31,7 +31,7 @@ def test_create_and_get_task(api):
 
     # now get the newly created task by its ID
     task_id = response.json()["id"]
-    assert type(task_id) == int
+    assert isinstance(task_id, int)
 
     response = api.get(f"/tasks/{task_id}")
     assert response.status_code == 200

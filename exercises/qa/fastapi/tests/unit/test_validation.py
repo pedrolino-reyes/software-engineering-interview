@@ -3,11 +3,12 @@ Tests relating to non-persistence logic of the functions in crud.py
 (the persistence is handled by sqlalchemy and is tested in the integration tests).
 """
 
+from unittest.mock import patch
+
 import pytest
 
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
-from unittest.mock import patch
 
 from app import schemas
 from app.crud import create_task
@@ -29,9 +30,7 @@ def task_create_side_effect(*args, **kwargs):
     return "task was created"
 
 
-"""
-Tests focusing on the title field.
-"""
+# Tests focusing on the title field.
 def test_title_too_short(mocker):
     """
     Title must be at least 5 characters long.
@@ -88,9 +87,6 @@ def test_title_too_long(_Task, mocker):
     assert excinfo.value.detail == TITLE_ERROR_MSG
 
 
-"""
-Tests focusing on the description field.
-"""
 @patch('app.models.Task')
 def test_description_too_short(_Task, mocker):
     db = mocker.MagicMock(Session)
