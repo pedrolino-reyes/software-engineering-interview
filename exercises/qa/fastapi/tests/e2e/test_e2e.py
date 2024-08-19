@@ -121,3 +121,26 @@ def test_create_update_and_delete_task(api):
     response = api.get(f"/tasks/{task_id}")
     assert response.status_code == 404
     assert response.json()["detail"] == "Task not found"
+
+
+def test_unicode(api):
+    payload = {
+        "title": "Japanese",
+        "description": "イロハニホヘト チリヌルヲ ワカヨタレソ ツネナラム",
+        "completed": False
+    }
+    response = api.post("/tasks", json=payload)
+    assert response.status_code == 200
+    assert response.json()["title"] == payload["title"]
+    assert response.json()["description"] == payload["description"]
+    assert response.json()["completed"] == payload["completed"]
+    assert response.json()["id"] is not None
+
+    task_id = response.json()["id"]
+
+    response = api.get(f"/tasks/{task_id}")
+    assert response.status_code == 200
+    assert response.json()["title"] == payload["title"]
+    assert response.json()["description"] == payload["description"]
+    assert response.json()["completed"] == payload["completed"]
+    assert response.json()["id"] == task_id
