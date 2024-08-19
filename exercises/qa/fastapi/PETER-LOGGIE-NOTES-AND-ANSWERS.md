@@ -41,9 +41,9 @@ Obviously, we wouldn't do serious load or stress testing on our local machine us
 
 I don't have much insight into what a normal load for this system would be, so the load test is totally ficticious. Stress testing typically means pushing the system as far as it can go before breaking, and then seeing how it can recover. I ran a test where we ramped up to 1000 users.
 
-![Locust charts](Locust charts.png "Locust charts")
+![Locust charts](locust-charts.png "Locust charts")
 
-![Locust failures](Locust failures.png "Locust failures")
+![Locust failures](locust-failures.png "Locust failures")
 
 
 ## Additional python libraries
