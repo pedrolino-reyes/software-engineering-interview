@@ -165,7 +165,7 @@ poetry run pytest tests/unit tests-integration --cov-report term --cov=app
 If you want a really useful view of things, run the html report. The html report will show you which lines of code aren't executed by the tests.
 
 ```
-poetry run pytest tests/unit tests-integration --cov-report html --cov=app
+poetry run pytest tests/unit tests/integration --cov-report html --cov=app
 ```
 
 This app is so simple at the moment that we have almost 100% test coverage - the only part that isn't covered by the unit and integration tests is the real database connection. This is tested by the e2e tests.
