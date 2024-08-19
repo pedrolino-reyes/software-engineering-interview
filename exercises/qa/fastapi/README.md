@@ -159,7 +159,7 @@ poetry run pytest tests/integration --cov-report term --cov=app
 The unit and integration tests can be run together to get a view on how much of the application code is covered by tests:
 
 ```
-poetry run pytest tests/unit tests-integration --cov-report term --cov=app
+poetry run pytest tests/unit tests/integration --cov-report term --cov=app
 ```
 
 If you want a really useful view of things, run the html report. The html report will show you which lines of code aren't executed by the tests.
