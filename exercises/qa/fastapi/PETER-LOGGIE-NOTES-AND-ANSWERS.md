@@ -33,11 +33,17 @@ The db persistence is tested properly by the integration and e2e tests, and the 
 The coverage report shows that only the "real" database connection (`app/database.py`) isn't covered by the unit and integration tests. It's possible to add a `.coveragerc` file to automatically exclude this file from the coverage report, in the case that we want to enforce 100% test coverage.
 
 
+## Load testing with Locust
 
+I only added a couple of very basic load tests - one to test the performance of the GET /tasks request, and one to test the performance of the system when creating a task using the POST /tasks endpoint.
 
-- Write a load test on one of the implemented endpoints. Tip: [Locust](https://locust.io) or [K6](https://k6.io) can used to do so easily.
-  - If you can, attach a screenshot of the test report to see the endpoint response time curve as the test increases or decreases the load.
+Obviously, we wouldn't do serious load or stress testing on our local machine using a docker container - these tests would typically be run against a server that's comparable to our production system. Also, when running load or stress tests for real, we may even want to run distributed load tests, where multiple machines are used to fire requests at the system under test.
 
+I don't have much insight into what a normal load for this system would be, so the load test is totally ficticious. Stress testing typically means pushing the system as far as it can go before breaking, and then seeing how it can recover. I ran a test where we ramped up to 1000 users.
+
+![Locust charts](Locust charts.png "Locust charts")
+
+![Locust failures](Locust failures.png "Locust failures")
 
 
 ## Additional python libraries

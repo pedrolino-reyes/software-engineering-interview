@@ -191,5 +191,3 @@ poetry run locust -f app/performance/locustfile.py --host=http://127.0.0.1:8000
 After executing this command, the Locust web app will be running. You need to open it in a web browser. The output in the command line will tell you where it is running, typically it will be at `http://0.0.0.0:8089`.
 
 When you open the web app, you can configure how many users in total you want to use in your load simulation, and how quickly these users should be ramped up (become active).
-
-There is a sample data set that can be used for load testing, which contains 100,000 tasks.
