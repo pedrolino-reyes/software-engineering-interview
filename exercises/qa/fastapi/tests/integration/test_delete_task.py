@@ -16,7 +16,6 @@ def test_create_and_delete_task(client):
     assert type(task_id) == int
 
     response = client.delete(f"/tasks/{task_id}")
-    import pytest; pytest.set_trace()
     assert response.status_code == 200
 
     # try to get the task again, we expect a 404
